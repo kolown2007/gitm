@@ -3,9 +3,12 @@
         import type { PageData } from './$types';
         export let data: PageData & { machine_id: string };
         import {eventData} from "$lib/pusherclient";
+        
 
     import type { Scene } from "phaser";
     import type { MainMenu } from "../game/scenes/MainMenu";
+    import type { scene1 } from "../game/scenes/scene1";
+  
     import PhaserGame, { type TPhaserRef } from "../game/PhaserGame.svelte";
 
     // The sprite can only be moved in the MainMenu Scene
@@ -17,7 +20,7 @@
 
     const changeScene = () => {
 
-        const scene = phaserRef.scene as MainMenu;
+        const scene = phaserRef.scene as scene1;
 
         if (scene)
         {
@@ -84,13 +87,28 @@
     }
 
    
-
-    $: {
-    if ($eventData === "change") {
-        changeScene();
+//invoke the changescene function when the event is emitted
+//     $: {
+//     if ($eventData === "change") {
+//         changeScene();
       
+//     }
+     
+$: {
+        // Subscribe to eventData
+        eventData.subscribe(message => {
+            
+            if (message) {
+                console.log("executing...");
+                console.log(message);
+                changeScene();
+            }
+        });
     }
-}
+
+
+
+
 
     </script>
 
