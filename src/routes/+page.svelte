@@ -1,7 +1,6 @@
 
 <script lang="ts">
         import type { PageData } from './$types';
-        export let data: PageData & { machine_id: string };
         import {eventData} from "$lib/pusherclient";
         
 
@@ -87,12 +86,7 @@
     }
 
    
-//invoke the changescene function when the event is emitted
-//     $: {
-//     if ($eventData === "change") {
-//         changeScene();
-      
-//     }
+
      
 $: {
         // Subscribe to eventData
@@ -114,25 +108,7 @@ $: {
 
 <div id="app">
     <PhaserGame bind:phaserRef={phaserRef} currentActiveScene={currentScene} />
-    <div>
-        <div>
-            <button class="button" on:click={changeScene}>Change Scene</button>
-        </div>
-        <div>
-            <button class="button" disabled={canMoveSprite} on:click={moveSprite}>Toggle Movement</button>
-        </div>
-        <div class="spritePosition">
-            Sprite Position:
-            <pre>{JSON.stringify(spritePosition, null, 2)}</pre>
-        </div>
-        <div>
-            <button class="button" on:click={addSprite}>Add New Sprite</button>
-        </div>
-        <div>
-            {data.machine_id}
-            <h1>{$eventData}</h1>
-        </div>
-    </div>
+   
 </div>
 
 
@@ -147,35 +123,6 @@ $: {
         align-items: center;
     }
     
-    .spritePosition {
-        margin: 10px 0 0 10px;
-        font-size: 0.8em;
-    }
-
-    .button {
-        width: 140px;
-        margin: 10px;
-        padding: 10px;
-        background-color: #000000;
-        color: rgba(255, 255, 255, 0.87);
-        border: 1px solid rgba(255, 255, 255, 0.87);
-        cursor: pointer;
-        transition: all 0.3s;
-
-        &:hover {
-            border: 1px solid #0ec3c9;
-            color: #0ec3c9;
-        }
-
-        &:active {
-            background-color: #0ec3c9;
-        }
-
-        /* Disabled styles */
-        &:disabled {
-            cursor: not-allowed;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: rgba(255, 255, 255, 0.3);
-        }
-    }
+   
+      
 </style>
