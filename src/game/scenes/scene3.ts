@@ -19,12 +19,12 @@ export class scene3 extends Scene
     create ()
     {
         this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(0xFFA500);
+        this.camera.setBackgroundColor(0xADD8E6);
 
-        this.background = this.add.image(512, 384, 'background');
-        this.background.setAlpha(0.5);
+        // this.background = this.add.image(512, 384, 'background');
+        // this.background.setAlpha(0.5);
 
-        this.gameText = this.add.text(512, 384, 'scene3', {
+        this.gameText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, 'scene3', {
             fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
@@ -34,9 +34,12 @@ export class scene3 extends Scene
     }
     
    
-    changeScene ()
-    {
-    
-     this.scene.start(newScene(eventData));
+    changeScene() {
+        this.cameras.main.fadeOut(1000, 0, 0, 0, (camera: any, progress: number) => {
+            if (progress === 1) {
+                this.scene.start(newScene(eventData));
+            }
+        });
     }
+
 }

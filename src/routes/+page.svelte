@@ -1,9 +1,7 @@
-
 <script lang="ts">
         import type { PageData } from './$types';
         import {eventData} from "$lib/pusherclient";
         
-
     import type { Scene } from "phaser";
     import type { MainMenu } from "../game/scenes/MainMenu";
     import type { scene1 } from "../game/scenes/scene1";
