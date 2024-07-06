@@ -1,3 +1,16 @@
+<script lang="ts">
+if ('serviceWorker' in navigator) {
+	addEventListener('load', function () {
+		navigator.serviceWorker.register('/service-worker.ts').then(function (registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+            console.log('ServiceWorker registration failed: ', err);
+        });
+	});
+}
+
+</script>
+
 <svelte:head>
     <title>Ghost in The Machine</title>
 </svelte:head>
