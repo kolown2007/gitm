@@ -1,11 +1,11 @@
+import { PUSHER_APP_ID } from '$env/static/private';
 import Pusher from 'pusher-js';
 import { writable } from 'svelte/store';
 
 
-// Enable pusher logging - don't include this in production
-//Pusher.logToConsole = true;
 
-var pusher = new Pusher('0c270d7232e186fdc1c8', {
+
+var pusher = new Pusher(PUSHER_APP_ID, {
   cluster: 'ap1'
 });
 

@@ -25,9 +25,13 @@ const config: Phaser.Types.Core.GameConfig = {
 };
 
 const StartGame = (parent: string) => {
+    const game = new Game({ ...config, parent });
 
-    return new Game({ ...config, parent });
+    window.addEventListener('resize', () => {
+        game.scale.resize(window.innerWidth, window.innerHeight);
+    });
 
+    return game;
 }
 
 export default StartGame;

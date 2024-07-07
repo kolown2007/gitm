@@ -1,6 +1,6 @@
 <script lang="ts">
 
-import {eventData} from "$lib/pusherclient";
+import {eventData} from "$lib/ablyclient";
    
 </script>
 

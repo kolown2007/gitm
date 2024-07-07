@@ -1,7 +1,7 @@
 import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { newScene } from '../statescene';
-import { eventData } from "$lib/pusherclient";
+import { eventData } from "$lib/ablyclient";
 
 
 export class scene2 extends Scene
@@ -31,7 +31,7 @@ export class scene2 extends Scene
 
         EventBus.emit('current-scene-ready', this);
     }
-
+// this will have a fade out effect when changing scenes
     changeScene() {
         this.cameras.main.fadeOut(1000, 0, 0, 0, (camera: any, progress: number) => {
             if (progress === 1) {

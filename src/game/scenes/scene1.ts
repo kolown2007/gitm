@@ -1,7 +1,7 @@
 import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { newScene } from '../statescene';
-import { eventData } from "$lib/pusherclient";
+import { eventData } from "$lib/ablyclient";
 
 
 export class scene1 extends Scene
@@ -33,12 +33,7 @@ export class scene1 extends Scene
     }
 
     
-  
-    // changeScene ()
-    // {
-    
-    //  this.scene.start(newScene(eventData));
-    // }
+
 
 
     changeScene() {

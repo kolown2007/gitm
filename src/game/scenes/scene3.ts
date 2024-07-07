@@ -1,7 +1,7 @@
 import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { newScene } from '../statescene';
-import { eventData } from "$lib/pusherclient";
+import { eventData } from "$lib/ablyclient";
 
 
 

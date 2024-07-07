@@ -22,6 +22,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"ably": "^2.2.1",
 		"phaser": "^3.80.1",
 		"pusher": "^5.2.0",
 		"pusher-js": "^8.4.0-rc2",
