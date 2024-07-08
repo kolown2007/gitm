@@ -20,14 +20,28 @@ export class scene2 extends Scene
         this.camera = this.cameras.main;
         this.camera.setBackgroundColor(0xFFC0CB);
 
-        // this.background = this.add.image(512, 384, 'background');
-        // this.background.setAlpha(0.5);
+        this.background = this.add.sprite(0, 0, 'ghost1');
+        this.background.setOrigin(0, 0);
+        this.background.setScale(this.camera.width / this.background.width, this.camera.height / this.background.height);
 
-        this.gameText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, 'scene2', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        }).setOrigin(0.5).setDepth(100);
+        
+        const logo = this.add.image(0, 0, 'ghost1');
+        logo.setOrigin(0,0);
+        logo.setScale(this.camera.width / this.background.width, this.camera.height / this.background.height);
+
+       if (logo.preFX) {
+           logo.preFX.addBlur();
+       }
+
+    this.tweens.add({
+        targets: logo,
+        x: this.camera.width - logo.width,
+        duration: 2000,
+        ease: 'Linear',
+        yoyo: true,
+        repeat: -1
+    });
+  
 
         EventBus.emit('current-scene-ready', this);
     }

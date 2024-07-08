@@ -17,22 +17,13 @@ export class scene1 extends Scene
 
     create ()
     {
-        this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(0x00ff00);
-
-        // this.background = this.add.image(512, 384, 'background');
-        // this.background.setAlpha(0.5);
-
-        this.gameText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, 'scene1', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        }).setOrigin(0.5).setDepth(100);
+      
+        this.cameras.main.setBackgroundColor(0x000000);
+        this.add.shader('fireball', this.cameras.main.width/2,  this.cameras.main.height/2, this.cameras.main.width, this.cameras.main.height);
+   
 
         EventBus.emit('current-scene-ready', this);
     }
-
-    
 
 
 
