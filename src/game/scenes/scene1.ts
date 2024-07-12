@@ -19,7 +19,7 @@ export class scene1 extends Scene
     {
       
         this.cameras.main.setBackgroundColor(0x000000);
-        this.add.shader('fireball', this.cameras.main.width/2,  this.cameras.main.height/2, this.cameras.main.width, this.cameras.main.height);
+        this.add.shader('sea', this.cameras.main.width/2,  this.cameras.main.height/2, this.cameras.main.width, this.cameras.main.height);
    
 
         EventBus.emit('current-scene-ready', this);

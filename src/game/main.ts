@@ -4,6 +4,7 @@ import { Preloader } from './scenes/Preloader';
 import { scene1} from './scenes/scene1';
 import { scene2} from './scenes/scene2';
 import { scene3} from './scenes/scene3';
+import { scene4} from './scenes/scene4';
 
 
 //  Find out more information about the Game Config at:
@@ -19,7 +20,8 @@ const config: Phaser.Types.Core.GameConfig = {
         Preloader,
         scene1,
         scene2,
-        scene3
+        scene3,
+        scene4
 
     ]
 };

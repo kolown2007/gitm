@@ -17,10 +17,13 @@ export class Preloader extends Scene
 
         //ghost paintings
         this.load.image('ghost1', 'ghost.png');
+
+        //scrap paintings
+        this.load.image('scrap1', '1.jpg');
         
 
-        
         this.load.glsl('fireball', 'shaders/shader0.frag');
+        this.load.glsl('sea', 'shaders/shader1.frag');
     }
 
     create ()
@@ -29,6 +32,6 @@ export class Preloader extends Scene
         //  For example, you can define global animations here, so we can use them in other scenes.
 
         //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
-        this.scene.start('scene2');
+        this.scene.start('scene4');
     }
 }
