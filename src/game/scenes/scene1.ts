@@ -18,7 +18,7 @@ export class scene1 extends Scene
 
     create ()
     {
-      
+        this.camera = this.cameras.main;
         
         this.cameras.main.setBackgroundColor(0x000000);
 
