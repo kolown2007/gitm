@@ -51,7 +51,7 @@ export class scene1 extends Scene
    
 
 
-        //EventBus.emit('current-scene-ready', this);
+        EventBus.emit('current-scene-ready', this);
     }
 
 
