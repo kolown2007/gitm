@@ -3,43 +3,29 @@ import { Scene } from 'phaser';
 import { newScene } from '../statescene';
 import { eventData } from "$lib/ablyclient";
 
-//scene 4 random colors
+//scene 5 contemporary art collection
 
-export class scene4 extends Scene
+export class scene5 extends Scene
 {
     camera!: Phaser.Cameras.Scene2D.Camera;
-    art!: Phaser.GameObjects.Image;
+    background!: Phaser.GameObjects.Image;
     gameText!: Phaser.GameObjects.Text;
-    sprites!: Phaser.GameObjects.Group;
-
-   
-  
 
     constructor ()
     {
-        super('scene4');
+        super('scene5');
     }
 
     create ()
     {
         this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(Phaser.Display.Color.RandomRGB().color);
+        this.camera.setBackgroundColor(0xDA0229);
+
      
+  
 
         EventBus.emit('current-scene-ready', this);
     }
-
-
-
-
-    
-
-
-
-
-
-
-    
 // this will have a fade out effect when changing scenes
     changeScene() {
         this.cameras.main.fadeOut(1000, 0, 0, 0, (camera: any, progress: number) => {

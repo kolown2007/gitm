@@ -3,7 +3,7 @@ import { Scene } from 'phaser';
 import { newScene } from '../statescene';
 import { eventData } from "$lib/ablyclient";
 
-
+//scene 3 blue screen
 
 export class scene3 extends Scene
 {
@@ -19,21 +19,14 @@ export class scene3 extends Scene
     create ()
     {
         this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(0xADD8E6);
+        this.camera.setBackgroundColor(0x0000FF);
 
-        // this.background = this.add.image(512, 384, 'background');
-        // this.background.setAlpha(0.5);
-
-        this.gameText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, 'scene3', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        }).setOrigin(0.5).setDepth(100);
+     
+  
 
         EventBus.emit('current-scene-ready', this);
     }
-    
-   
+// this will have a fade out effect when changing scenes
     changeScene() {
         this.cameras.main.fadeOut(1000, 0, 0, 0, (camera: any, progress: number) => {
             if (progress === 1) {
