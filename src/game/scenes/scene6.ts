@@ -23,43 +23,45 @@ export class scene6 extends Scene
         // this.camera.setBackgroundColor(0xADD8E6);
 
     this.camera.setSize(this.camera.width, this.camera.height);
+
+
+
+  const logo = this.add.image(0, 0, 'ghost').setOrigin(0.5, 0.5);
+  logo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+
+  // Scale the image to fill the entire screen
+logo.displayWidth = this.cameras.main.width;
+logo.displayHeight = this.cameras.main.height;
+
+    if (logo.preFX) {
+      
+        //  logo.preFX.addBlur(2);
+        //  logo.preFX.addBarrel(1);
+        //  logo.preFX.addBokeh(5)
+        //  logo.preFX.addBlur(2);
+        //  logo.preFX.addBarrel(8);
+        logo.preFX.addDisplacement('ghost',.05,3)
+        logo.preFX.addBlur(2);
+        logo.preFX.addBokeh(10)
   
-
-    this.background = this.add.image(0,0, 'landscape1').setOrigin(0, 0);;
-    this.background.setScale(this.camera.width / this.background.width);
-
-        // Set the camera bounds to match the height of the background image
-         let imageHeight = this.background.height * this.background.scaleY;
-        // console.log(imageHeight);
-         this.cameras.main.setBounds(0, 0, this.camera.width, imageHeight);
-         this.camera.scrollY = imageHeight - this.camera.height;
-
- //  From here down is just camera controls and feedback
-var cursors = this.input.keyboard?.createCursorKeys();
-
- var controlConfig = {
-     camera: this.cameras.main,
-     up: cursors?.up,
-     down: cursors?.down,
-     acceleration: 0.06,
-     drag: 0.0005,
-     maxSpeed: 1.0
- };
-
- this.controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
-
-
-
-         //this doesnt work with the camera
-         //EventBus.emit('current-scene-ready', this);
     }
 
-    update (time: number, delta: number)
-    {
-        this.controls.update(delta);
+    this.tweens.add({
+        targets: logo,
+        angle: 200, // Rotate 360 degrees
+        duration: 2000, // Duration of the rotation in milliseconds
+        ease: 'Linear', // Easing function
+        repeat: -1 // Repeat indefinitely
+    });
 
-       
+
+      
+
+      
+         EventBus.emit('current-scene-ready', this);
     }
+
+    
     
    
     changeScene() {

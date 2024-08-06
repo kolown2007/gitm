@@ -3,7 +3,7 @@ import { Scene } from 'phaser';
 import { newScene } from '../statescene';
 import { eventData } from "$lib/ablyclient";
 
-//black loading screen
+//HALFWAY ---> black loading screen
 
 export class scene1 extends Scene
 {
@@ -45,11 +45,6 @@ export class scene1 extends Scene
                 delay: i * 100
             });
         }
-
-
-       
-   
-
 
         EventBus.emit('current-scene-ready', this);
     }

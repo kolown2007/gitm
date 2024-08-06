@@ -13,8 +13,6 @@ export class scene4 extends Scene
     sprites!: Phaser.GameObjects.Group;
 
    
-  
-
     constructor ()
     {
         super('scene4');
@@ -28,15 +26,6 @@ export class scene4 extends Scene
 
         EventBus.emit('current-scene-ready', this);
     }
-
-
-
-
-    
-
-
-
-
 
 
     
