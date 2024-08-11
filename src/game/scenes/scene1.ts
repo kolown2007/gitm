@@ -2,6 +2,7 @@ import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { newScene } from '../statescene';
 import { eventData } from "$lib/ablyclient";
+import { initializeAbly } from "$lib/ablyclient";
 
 //HALFWAY ---> black loading screen
 
@@ -46,7 +47,14 @@ export class scene1 extends Scene
             });
         }
 
+        initializeAbly(this, () => this.loveEffects());
+
         EventBus.emit('current-scene-ready', this);
+    }
+
+
+    private loveEffects() {
+        console.log("still loading");
     }
 
 

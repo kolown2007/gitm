@@ -3,7 +3,6 @@
         import {eventData} from "$lib/ablyclient";
         
     import type { Scene } from "phaser";
-    import type { MainMenu } from "../game/scenes/MainMenu";
     import type { scene1 } from "../game/scenes/scene1";
   
     import PhaserGame, { type TPhaserRef } from "../game/PhaserGame.svelte";
@@ -13,7 +12,9 @@
 
     //  References to the PhaserGame component (game and scene are exposed)
     let phaserRef: TPhaserRef = { game: null, scene: null};
-    const spritePosition = { x: 0, y: 0 };
+   
+
+
 
     const changeScene = () => {
 
@@ -29,53 +30,9 @@
 
     }
     
-    const moveSprite = () => {
 
-        const scene = phaserRef.scene as MainMenu;
 
-        if (scene)
-        {
-
-            // Get the update logo position
-            (scene as MainMenu).moveLogo(({ x, y }) => {
-
-                spritePosition.x = x;
-                spritePosition.y = y;
-
-            });
-
-        }
-
-    }
-
-    const addSprite = () => {
-
-        const scene = phaserRef.scene as Scene;
-
-        if (scene)
-        {
-
-            // Add more stars
-            const x = Phaser.Math.Between(64, scene.scale.width - 64);
-            const y = Phaser.Math.Between(64, scene.scale.height - 64);
-
-            //  `add.sprite` is a Phaser GameObjectFactory method and it returns a Sprite Game Object instance
-            const star = scene.add.sprite(x, y, 'star');
-
-            //  ... which you can then act upon. Here we create a Phaser Tween to fade the star sprite in and out.
-            //  You could, of course, do this from within the Phaser Scene code, but this is just an example
-            //  showing that Phaser objects and systems can be acted upon from outside of Phaser itself.
-            scene.add.tween({
-                targets: star,
-                duration: 500 + Math.random() * 1000,
-                alpha: 0,
-                yoyo: true,
-                repeat: -1
-            });
-            
-        }
-
-    }
+    
 
     // Event emitted from the PhaserGame component
     const currentScene = (scene: Scene) => {
@@ -86,6 +43,23 @@
    
 
      
+// $: {
+//         // Subscribe to eventData
+//         eventData.subscribe(message => {
+            
+//             if (message) {
+//                 console.log("executing...");
+//                 console.log(message);
+//                 changeScene();
+//             }
+//         });
+//     }
+
+
+
+
+
+
 $: {
         // Subscribe to eventData
         eventData.subscribe(message => {
@@ -99,10 +73,9 @@ $: {
     }
 
 
-
-
-
     </script>
+
+
 
 <div id="app">
     <PhaserGame bind:phaserRef={phaserRef} currentActiveScene={currentScene} />
