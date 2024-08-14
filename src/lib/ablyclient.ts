@@ -13,7 +13,7 @@ console.log("Connected");
 
 
 
-channel.subscribe("first", (message) => {
+channel.subscribe("state", (message) => {
   // console.log(`event-> first: msg-> ${message.data}`);
    eventData.set(message.data);
 
