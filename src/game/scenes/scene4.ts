@@ -1,7 +1,8 @@
 import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { newScene } from '../statescene';
-import { eventData } from "$lib/ablyclient";
+import { eventData, initializeAbly } from "$lib/ablyclient";
+
 
 //scene 4 random colors
 
@@ -23,7 +24,7 @@ export class scene4 extends Scene
         this.camera = this.cameras.main;
         this.camera.setBackgroundColor(Phaser.Display.Color.RandomRGB().color);
      
-
+        initializeAbly(this, () => this.loveEffects());
         EventBus.emit('current-scene-ready', this);
     }
 
@@ -38,4 +39,12 @@ export class scene4 extends Scene
         });
     }
 
+
+    private loveEffects() {
+        this.camera.setBackgroundColor(Phaser.Display.Color.RandomRGB().color)
+    }
+    
+
+
 }
+

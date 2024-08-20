@@ -3,7 +3,7 @@ import { Scene } from 'phaser';
 import { newScene } from '../statescene';
 import { eventData } from "$lib/ablyclient";
 
-//scene 5 contemporary art collection
+//scene 6 contemporary art collection
 
 export class scene6 extends Scene
 {

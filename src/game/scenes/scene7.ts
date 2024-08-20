@@ -31,7 +31,7 @@ export class scene7 extends Scene {
         this.points.push(this.origin);
 
   
-
+ 
         // Draw the first line
         this.drawLine();
 
