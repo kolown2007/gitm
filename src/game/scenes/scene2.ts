@@ -1,8 +1,7 @@
 import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { newScene } from '../statescene';
- import { eventData } from "$lib/ablyclient";
-import { initializeAbly } from "$lib/ablyclient";
+import { eventData } from "$lib/ablyclient";
 
 //scene 2 red alert
 
@@ -23,20 +22,13 @@ export class scene2 extends Scene
         this.camera = this.cameras.main;
         this.camera.setBackgroundColor(0xDA0229);
 
-      
-        initializeAbly(this, () => this.loveEffects());
+  
 
         EventBus.emit('current-scene-ready', this);
 
 }
 
 
-private loveEffects() {
-    console.log("Circle added to the scene.");
-    const x = Phaser.Math.Between(0, this.cameras.main.width);
-    const y = Phaser.Math.Between(0, this.cameras.main.height);
-    this.add.circle(x, y, 50, 0xff0000); // Add a red circle
-}
 
 
 

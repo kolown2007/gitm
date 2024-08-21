@@ -3,7 +3,7 @@ import { Scene } from 'phaser';
 import { newScene } from '../statescene';
 import { eventData } from "$lib/ablyclient";
 
-//scene 7 contemporary art collection
+//scene 7 screen crack
 
 export class scene7 extends Scene {
     camera!: Phaser.Cameras.Scene2D.Camera;

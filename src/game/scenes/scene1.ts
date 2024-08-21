@@ -47,7 +47,7 @@ export class scene1 extends Scene
             });
         }
 
-        initializeAbly(this, () => this.loveEffects());
+        //initializeAbly(this, () => this.loveEffects());
 
         EventBus.emit('current-scene-ready', this);
     }

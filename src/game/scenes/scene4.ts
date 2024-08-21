@@ -31,13 +31,14 @@ export class scene4 extends Scene
 
     
 // this will have a fade out effect when changing scenes
-    changeScene() {
-        this.cameras.main.fadeOut(1000, 0, 0, 0, (camera: any, progress: number) => {
-            if (progress === 1) {
-                this.scene.start(newScene(eventData));
-            }
-        });
-    }
+
+changeScene() {
+    this.cameras.main.fadeOut(1000, 0, 0, 0, (camera: any, progress: number) => {
+        if (progress === 1) {
+            this.scene.start(newScene(eventData));
+        }
+    });
+}
 
 
     private loveEffects() {
