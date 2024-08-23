@@ -23,8 +23,9 @@ export class Preloader extends Scene
         this.load.setPath('https://kolown.net/assets/gitm/');
         
         //ghost paintings
-        this.load.image('ghost', 'ghost.png');
-        this.load.image('ghost1', 'ghost1.png');
+        for (let i = 0; i <= 14; i++) {
+            this.load.image(`ghost${i}`, `ghost${i}.png`);
+        }
         
      
     }
@@ -35,7 +36,7 @@ export class Preloader extends Scene
         //  For example, you can define global animations here, so we can use them in other scenes.
 
         //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
-        // this.scene.start('scene2');
+        // this.scene.start('scene5');
 
         const introScene = this.scenes[Math.floor(Math.random() * this.scenes.length)];
         this.scene.start(introScene)

@@ -24,47 +24,41 @@ export class scene5 extends Scene
 
     this.camera.setSize(this.camera.width, this.camera.height);
 
-  const logo = this.add.image(0, 0, 'ghost1').setOrigin(0.5, 0.5);
+    //ghostpainting 
+    let ghostpainting = 'ghost'+ Math.floor(Math.random() * 15);
+
+
+  const logo = this.add.image(0, 0, ghostpainting).setOrigin(0.5, 0.5);
   logo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
   // Scale the image to fill the entire screen
 logo.displayWidth = this.cameras.main.width;
 logo.displayHeight = this.cameras.main.height;
 
-    if (logo.preFX) {
-      
-        //effects 1 
-        //  logo.preFX.addBarrel(1);
-        //  logo.preFX.addDisplacement('ghost',.05,3)
-        //  logo.preFX.addBlur(2);
-        //  logo.preFX.addBokeh(10)
+this.applyLogoEffectsAndAnimation(logo);
 
-         //effects 2
-         logo.preFX.addBarrel(2);
-         //logo.preFX.addDisplacement('ghost',.05,3)
-         //logo.preFX.addBlur(2);
-         logo.preFX.addBokeh(8)
-         logo.preFX.addGlow(0x00ff00, 100, 100);
-     
-     
-    }
-
-    this.tweens.add({
-        targets: logo,
-        angle: 360, // Rotate 360 degrees
-        duration: 2000, // Duration of the rotation in milliseconds
-        ease: 'linear', // Easing function
-        repeat: -1 // Repeat indefinitely
-    });
-
-
-      
-
+   
       
          EventBus.emit('current-scene-ready', this);
     }
 
-    
+    applyLogoEffectsAndAnimation(logo: any) {
+        if (logo.preFX) {
+            // Apply effects
+            logo.preFX.addBarrel(2);
+            logo.preFX.addBokeh(8);
+            logo.preFX.addGlow(0x00ff00, 100, 100);
+        }
+
+        // Add animation
+        this.tweens.add({
+            targets: logo,
+            angle: 360, // Rotate 360 degrees
+            duration: 2000, // Duration of the rotation in milliseconds
+            ease: 'linear', // Easing function
+            repeat: -1 // Repeat indefinitely
+        });
+    }
     
    
     changeScene() {
@@ -74,8 +68,5 @@ logo.displayHeight = this.cameras.main.height;
             }
         });
     }
-    // changeScene() {
-    //     this.scene.start(newScene(eventData));
-    // }
 
 }
