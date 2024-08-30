@@ -2,6 +2,7 @@ import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { newScene } from '../statescene';
 import { eventData } from "$lib/ablyclient";
+import { initializeAbly } from "$lib/ablyclient";
 
 //scene 3 blue screen
 
@@ -10,16 +11,14 @@ export class scene3 extends Scene
     camera!: Phaser.Cameras.Scene2D.Camera;
     background!: Phaser.GameObjects.Image;
     gameText!: Phaser.GameObjects.Text;
-    private countdown!: number;
+
     private scenes!: string[];
-    private countdownText!: Phaser.GameObjects.Text;
     private hasTransitioned: boolean;
 
 
     constructor ()
     {
         super('scene3');
-        this.countdown = 10; // Countdown time in seconds
         this.scenes = ['scene1', 'scene2', 'scene4']; // List of possible scenes to transition to
         this.hasTransitioned = false;
 
@@ -30,23 +29,34 @@ export class scene3 extends Scene
     {
         this.camera = this.cameras.main;
         this.camera.setBackgroundColor(0x0000FF);
-
-        this.countdownText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, ` ${this.countdown}`, {
-            fontSize: '80px',
-            color: '#FFFFFF'
-        });
-      
-        this.time.addEvent({
-            delay: 1000, // 1 second
-            callback: this.updateCountdown,
-            callbackScope: this,
-            loop: true
-        });
-
         EventBus.emit('current-scene-ready', this);
+
+        const textStyle = {
+            fontSize: '100px',
+            fontFamily: 'Consolas, "Courier New", monospace'
+        };
+
+        this.gameText = this.add.text(50, 200, ':( ', textStyle);
+
+        initializeAbly(this, () => this.loveEffects());
+        
     }
 
 
+    private currentTextState: number = 0;
+
+    private loveEffects() {
+        if (this.currentTextState === 0) {
+            this.gameText.setText(':)');
+            this.currentTextState = 1;
+        } else if (this.currentTextState === 1) {
+            this.gameText.setText(':p');
+            this.currentTextState = 2;
+        } else {
+            this.gameText.setText(':('); // Reset to initial state or any other text
+            this.currentTextState = 0;
+        }
+    }
 
 
 // this will have a fade out effect when changing scenes
@@ -70,15 +80,6 @@ changeScene(eventData: any) {
         // Your update logic here
     }
 
-    updateCountdown() {
-        if (this.hasTransitioned) return; // Prevent multiple transitions
-    
-        this.countdown--;
-        this.countdownText.setText(` ${this.countdown}`);
-        if (this.countdown <= 0) {
-            this.changeScene(null);
-        }
 
-    }
 
 }
