@@ -1,8 +1,8 @@
 import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { newScene } from '../statescene';
-import { eventData } from "$lib/ablyclient";
-import { initializeAbly } from "$lib/ablyclient";
+import { eventData, initializeAbly } from "$lib/ablyclient";
+
 
 //HALFWAY ---> black loading screen
 

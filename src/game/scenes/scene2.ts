@@ -1,7 +1,7 @@
 import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { newScene } from '../statescene';
-import { eventData } from "$lib/ablyclient";
+import { eventData, initializeAbly } from "$lib/ablyclient";
 
 //scene 2 red alert
 
@@ -10,6 +10,7 @@ export class scene2 extends Scene
     camera!: Phaser.Cameras.Scene2D.Camera;
     background!: Phaser.GameObjects.Image;
     gameText!: Phaser.GameObjects.Text;
+    private rect!: Phaser.GameObjects.Rectangle; 
 
     constructor ()
     {
@@ -22,12 +23,18 @@ export class scene2 extends Scene
         this.camera = this.cameras.main;
         this.camera.setBackgroundColor(0xDA0229);
 
+   initializeAbly(this, () => this.loveEffects());
+
   this.growRect();
 
         EventBus.emit('current-scene-ready', this);
 
 }
 
+
+private loveEffects() {
+   this.cameras.main.flash(1000, 255, 0, 0);
+}
 
 
 

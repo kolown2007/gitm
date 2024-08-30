@@ -6,10 +6,10 @@ import { writable } from 'svelte/store';
 const ably = new Ably.Realtime(
   PUBLIC_ABLY
   );
+
 console.log("Connected");
   var channel = ably.channels.get("get-started");
-
-   export let eventData = writable("");
+  export let eventData = writable("");
 
 
 
@@ -20,14 +20,26 @@ channel.subscribe("state", (message) => {
 });
 
 
+// export function initializeAbly(scene: Phaser.Scene, callback: () => void) {
+//   try {
+//     channel.subscribe("endless", (message) => {
+//       if (scene.scene.isActive() && scene.scene.isVisible()) {
+//         callback();
+//       } else {
+//         console.log('Scene is not active or visible, skipping callback execution.');
+//       }
+//     });
+//   } catch (error) {
+//     console.error('Error during scene switch:', error);
+//   }
+// }
+
+
+
 export function initializeAbly(scene: Phaser.Scene, callback: () => void) {
   try {
     channel.subscribe("endless", (message) => {
-      if (scene.scene.isActive() && scene.scene.isVisible()) {
-        callback();
-      } else {
-        console.log('Scene is not active or visible, skipping callback execution.');
-      }
+      callback();
     });
   } catch (error) {
     console.error('Error during scene switch:', error);

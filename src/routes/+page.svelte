@@ -47,7 +47,6 @@
     $: {
         eventData.subscribe(message => {
             if (message) {
-                console.log("executing...");
                 console.log(message);
                 changeScene();
             }
