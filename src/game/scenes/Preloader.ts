@@ -12,7 +12,7 @@ export class Preloader extends Scene
     constructor ()
     {
         super('Preloader');
-        this.scenes = ['scene1', 'scene2', 'scene4','scene5','scene6']; // List of possible scenes to transition to
+        this.scenes = ['scene1', 'scene2', 'scene4','scene5']; // List of possible scenes to transition to
     }
 
    
@@ -36,10 +36,10 @@ export class Preloader extends Scene
         //  For example, you can define global animations here, so we can use them in other scenes.
 
         //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
-         this.scene.start('scene4');
+         //this.scene.start('scene4');
 
-        // const introScene = this.scenes[Math.floor(Math.random() * this.scenes.length)];
-        // this.scene.start(introScene)
+        const introScene = this.scenes[Math.floor(Math.random() * this.scenes.length)];
+        this.scene.start(introScene)
 
 
     }

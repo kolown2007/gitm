@@ -4,9 +4,9 @@ export const stateScenes = {
     state1: ['scene1'], //loading screen
     state2: ['scene2'], //red alert
     state3: ['scene3'], //blue screen
-    state4: ['scene1','scene2','scene4'], //random colors
-    state5: ['scene1','scene2', 'scene4', 'scene5','scene6'], //random visuals
-    state6: ['scene5', 'scene6'], //contemporary art collection
+    state4: ['scene4'], //random colors
+    state5: ['scene5'],  //contemporary art collection
+    state6: ['scene1','scene2', 'scene4', 'scene5'], //random visuals
 
   
   };
