@@ -6,7 +6,7 @@ export const stateScenes = {
     state3: ['scene3'], //blue screen
     state4: ['scene4'], //random colors
     state5: ['scene5'],  //contemporary art collection
-    state6: ['scene1','scene2', 'scene4', 'scene5'], //random visuals
+    state6: ['scene1','scene2', 'scene4'], //random visuals
 
   
   };
