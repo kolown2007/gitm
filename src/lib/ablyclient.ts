@@ -17,6 +17,11 @@ channel.subscribe("state", (message) => {
    console.log(`event-> first: msg-> ${message.data}`);
    eventData.set(message.data);
 
+    // Check if the state message is "refresh" and reload the window
+  if (message.data === "refresh") {
+    window.location.reload();
+  }
+
 });
 
 

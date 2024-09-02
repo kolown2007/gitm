@@ -1,7 +1,7 @@
 import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { newScene } from '../statescene';
-import { eventData } from "$lib/ablyclient";
+import { eventData, initializeAbly } from "$lib/ablyclient";
 
 //scene 5 contemporary art colelction
 
@@ -35,9 +35,9 @@ export class scene5 extends Scene
 logo.displayWidth = this.cameras.main.width;
 logo.displayHeight = this.cameras.main.height;
 
-this.applyLogoEffectsAndAnimation(logo);
+// this.applyLogoEffectsAndAnimation(logo);
 
-   
+   initializeAbly(this, () => this.loveEffects(logo));
       
          EventBus.emit('current-scene-ready', this);
     }
@@ -47,7 +47,7 @@ this.applyLogoEffectsAndAnimation(logo);
             // Apply effects
             logo.preFX.addBarrel(2);
             logo.preFX.addBokeh(8);
-            logo.preFX.addGlow(0x00ff00, 100, 100);
+            //logo.preFX.addGlow(0x00ff00, 100, 100);
         }
 
         // Add animation
@@ -58,6 +58,35 @@ this.applyLogoEffectsAndAnimation(logo);
             ease: 'linear', // Easing function
             repeat: -1 // Repeat indefinitely
         });
+    }
+
+    private currentTextState: number = 0;
+  
+
+    private loveEffects(logo: any) {
+        if (this.currentTextState === 0) {
+            logo.preFX.addPixelate(2);
+            this.currentTextState = 1;
+        } else if (this.currentTextState === 1) {
+            logo.preFX.addBokeh(8);
+    
+            const easingFunctions = ['linear', 'bounce'];
+            const randomEase = easingFunctions[Math.floor(Math.random() * easingFunctions.length)];
+            this.tweens.add({
+                targets: logo,
+                angle: 360, // Rotate 360 degrees
+                duration: 2000, // Duration of the rotation in milliseconds
+                ease: randomEase, // Easing function
+                repeat: 2 // Repeat indefinitely
+            });
+            this.currentTextState = 2;
+        } else if (this.currentTextState === 2) {
+          logo.preFX.addBokeh(2);
+            this.currentTextState = 3;
+        } else if (this.currentTextState === 3) {
+            logo.preFX.clear();
+            this.currentTextState = 0;
+        }
     }
     
    

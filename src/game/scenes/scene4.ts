@@ -21,8 +21,16 @@ export class scene4 extends Scene
 
     create ()
     {
+
+        
         this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(Phaser.Display.Color.RandomRGB().color);
+        //this.camera.setBackgroundColor(Phaser.Display.Color.RandomRGB().color);
+
+
+        this.bgeffects();
+  
+    
+
      
         initializeAbly(this, () => this.loveEffects());
         EventBus.emit('current-scene-ready', this);
@@ -42,10 +50,32 @@ changeScene() {
 
 
     private loveEffects() {
-        this.camera.setBackgroundColor(Phaser.Display.Color.RandomRGB().color)
+        // this.camera.setBackgroundColor(Phaser.Display.Color.RandomRGB().color)
+        this.bgeffects();
+    }
+
+
+    private bgeffects() {
+
+        const bg = this.add.image(0,0, '__WHITE').setOrigin(0, 0);
+
+        bg.setDisplaySize(this.cameras.main.width, this.cameras.main.height);
+
+        const gradient = bg.preFX.addGradient();
+
+    
+
+        gradient.color1 = Phaser.Display.Color.RandomRGB().color
+        gradient.color2 = Phaser.Display.Color.RandomRGB().color
+        gradient.size = Phaser.Math.Between(15, 30);
+    
+      
+
     }
     
 
 
 }
+
+
 
