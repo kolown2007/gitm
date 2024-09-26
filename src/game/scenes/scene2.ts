@@ -70,7 +70,7 @@ growRect(){
         scaleY: 1,                // Final scale in the Y direction
         duration: 30000,           // Duration of the animation in milliseconds
         onComplete: () => {
-           this.scene.start("scene3")
+           this.scene.start("scene5")
         }
     });
 

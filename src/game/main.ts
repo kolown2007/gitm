@@ -6,8 +6,7 @@ import { scene2} from './scenes/scene2';
 import { scene3} from './scenes/scene3';
 import { scene4} from './scenes/scene4';
 import { scene5} from './scenes/scene5';
-import { scene6} from './scenes/scene6';
-import { scene7} from './scenes/scene7';
+
 
 
 
@@ -27,10 +26,7 @@ const config: Phaser.Types.Core.GameConfig = {
         scene2,
         scene3,
         scene4,
-        scene5,
-        scene6,
-        scene7
-
+        scene5
     ]
 };
 

@@ -11,6 +11,7 @@ export class scene5 extends Scene
     background!: Phaser.GameObjects.Image;
     gameText!: Phaser.GameObjects.Text;
     controls!: Phaser.Cameras.Controls.SmoothedKeyControl;
+     ghostpainting!: string;
 
     constructor ()
     {
@@ -25,10 +26,10 @@ export class scene5 extends Scene
     this.camera.setSize(this.camera.width, this.camera.height);
 
     //ghostpainting 
-    let ghostpainting = 'ghost'+ Math.floor(Math.random() * 15);
+     this.ghostpainting = 'ghost'+ Math.floor(Math.random() * 15);
 
 
-  const logo = this.add.image(0, 0, ghostpainting).setOrigin(0.5, 0.5);
+  const logo = this.add.image(0, 0, this.ghostpainting).setOrigin(0.5, 0.5);
   logo.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
 
   // Scale the image to fill the entire screen
@@ -37,59 +38,28 @@ logo.displayHeight = this.cameras.main.height;
 
 // this.applyLogoEffectsAndAnimation(logo);
 
-   initializeAbly(this, () => this.loveEffects(logo));
+   initializeAbly(this, () => this.loveEffects());
       
          EventBus.emit('current-scene-ready', this);
     }
 
-    applyLogoEffectsAndAnimation(logo: any) {
-        if (logo.preFX) {
-            // Apply effects
-            logo.preFX.addBarrel(2);
-            logo.preFX.addBokeh(8);
-            //logo.preFX.addGlow(0x00ff00, 100, 100);
-        }
-
-        // Add animation
-        this.tweens.add({
-            targets: logo,
-            angle: 360, // Rotate 360 degrees
-            duration: 2000, // Duration of the rotation in milliseconds
-            ease: 'linear', // Easing function
-            repeat: -1 // Repeat indefinitely
-        });
-    }
+  
 
     private currentTextState: number = 0;
   
 
-    private loveEffects(logo: any) {
-        if (this.currentTextState === 0) {
-            logo.preFX.addPixelate(2);
-            this.currentTextState = 1;
-        } else if (this.currentTextState === 1) {
-            logo.preFX.addBokeh(8);
+
     
-            const easingFunctions = ['linear', 'bounce'];
-            const randomEase = easingFunctions[Math.floor(Math.random() * easingFunctions.length)];
-            this.tweens.add({
-                targets: logo,
-                angle: 360, // Rotate 360 degrees
-                duration: 2000, // Duration of the rotation in milliseconds
-                ease: randomEase, // Easing function
-                repeat: 2 // Repeat indefinitely
-            });
-            this.currentTextState = 2;
-        } else if (this.currentTextState === 2) {
-          logo.preFX.addBokeh(2);
-            this.currentTextState = 3;
-        } else if (this.currentTextState === 3) {
-            logo.preFX.clear();
-            this.currentTextState = 0;
-        }
-    }
-    
-   
+   private loveEffects() {
+
+    this.ghostpainting = 'ghost'+ Math.floor(Math.random() * 15);
+    const logo = this.add.image(0, 0, this.ghostpainting).setOrigin(0.5, 0.5);
+    logo.setPosition(Math.random()*this.cameras.main.width, Math.random()*this.cameras.main.height);
+
+   }
+
+
+
     changeScene() {
         this.cameras.main.fadeOut(1000, 0, 0, 0, (camera: any, progress: number) => {
             if (progress === 1) {
