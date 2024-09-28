@@ -40,12 +40,16 @@ logo.displayHeight = this.cameras.main.height;
 
    initializeAbly(this, () => this.loveEffects());
       
-         EventBus.emit('current-scene-ready', this);
-    }
+    EventBus.emit('current-scene-ready', this);
 
-  
+    this.input.on('pointerdown', () => {
+        this.loveEffects();
+    });
 
-    private currentTextState: number = 0;
+
+}
+
+private currentTextState: number = 0;
   
 
 
