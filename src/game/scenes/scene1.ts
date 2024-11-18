@@ -58,7 +58,7 @@ export class scene1 extends Scene
     }
 
     private loveEffects() {
-        console.log("still loading");
+        this.camera.setBackgroundColor(Phaser.Display.Color.RandomRGB().color)
         this.flyCirclesRandomly();
         this.time.delayedCall(2000, () => this.returnCirclesToOriginalPositions());
     }
@@ -78,6 +78,7 @@ export class scene1 extends Scene
     }
 
     private returnCirclesToOriginalPositions() {
+        this.cameras.main.setBackgroundColor(0x000000);
         this.circles.forEach((circle, index) => {
             const { x, y } = this.originalPositions[index];
             this.tweens.add({
