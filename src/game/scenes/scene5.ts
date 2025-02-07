@@ -11,7 +11,7 @@ export class scene5 extends Scene
     background!: Phaser.GameObjects.Image;
     gameText!: Phaser.GameObjects.Text;
     controls!: Phaser.Cameras.Controls.SmoothedKeyControl;
-     ghostpainting!: string;
+    ghostpainting!: string;
 
     constructor ()
     {
